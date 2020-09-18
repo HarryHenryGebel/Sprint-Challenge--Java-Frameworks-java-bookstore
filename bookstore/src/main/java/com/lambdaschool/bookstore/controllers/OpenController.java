@@ -124,7 +124,7 @@ public class OpenController {
       map,
       headers
     );
-
+    RestTemplate restTemplate = new RestTemplate();
     String theToken = restTemplate.postForObject(
       requestURI,
       request,
