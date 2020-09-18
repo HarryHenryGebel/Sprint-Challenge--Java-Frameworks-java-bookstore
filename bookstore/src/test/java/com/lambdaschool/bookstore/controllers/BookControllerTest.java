@@ -173,16 +173,59 @@ public class BookControllerTest {
   public void tearDown() {}
 
   @Test
-  public void listAllBooks() throws Exception {}
+  public void listAllBooks() throws Exception {
+    String apiUrl = "/books/books";
+
+    Mockito.when(bookService.findAll()).thenReturn(bookList);
+
+    RequestBuilder requestBuilder = MockMvcRequestBuilders
+      .get(apiUrl)
+      .accept(MediaType.APPLICATION_JSON);
+
+    MvcResult r = mockMvc.perform(requestBuilder).andReturn();
+    String tr = r.getResponse().getContentAsString();
+
+    ObjectMapper mapper = new ObjectMapper();
+    String er = mapper.writeValueAsString(bookList);
+
+    assertEquals("Rest API Returns List", er, tr);
+  }
 
   @Test
-  public void getBookById() throws Exception {}
+  public void getBookById() throws Exception {
+    String apiUrl = "/books/book/26";
+
+    Mockito.when(bookService.findBookById(26)).thenReturn(bookList.get(0));
+    RequestBuilder requestBuilder = MockMvcRequestBuilders
+      .get(apiUrl)
+      .accept(MediaType.APPLICATION_JSON);
+
+    MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+    String testResult = result.getResponse().getContentAsString();
+
+    ObjectMapper mapper = new ObjectMapper();
+    String errorResult = mapper.writeValueAsString(bookList.get(0));
+
+    assertEquals("Rest API Returns List", errorResult, testResult);
+  }
 
   @Test
-  public void getNoBookById() throws Exception {}
+  public void getNoBookById() throws Exception {
+    String apiUrl = "/books/book/9001";
 
-  @Test
-  public void addNewBook() throws Exception {}
+    Mockito.when(bookService.findBookById(9001)).thenReturn(null);
+
+    RequestBuilder rb = MockMvcRequestBuilders
+      .get(apiUrl)
+      .accept(MediaType.APPLICATION_JSON);
+
+    MvcResult r = mockMvc.perform(rb).andReturn();
+    String tr = r.getResponse().getContentAsString();
+
+    String er = "";
+
+    assertEquals("Rest API Returns List", er, tr);
+  }
 
   @Test
   public void updateFullBook() {}
