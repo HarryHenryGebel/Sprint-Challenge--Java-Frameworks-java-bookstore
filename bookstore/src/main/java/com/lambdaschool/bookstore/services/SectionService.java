@@ -1,21 +1,18 @@
 package com.lambdaschool.bookstore.services;
 
 import com.lambdaschool.bookstore.models.Section;
-
 import java.util.List;
 
-public interface SectionService
-{
-    List<Section> findAll();
+public interface SectionService {
+  List<Section> findAll();
 
-    Section findSectionById(long id);
+  Section findSectionById(long id);
 
-    void delete(long id);
+  void delete(long id);
 
-    Section save(Section role);
+  Section save(Section role);
 
-    Section update(Section role,
-                   long id);
+  Section update(Section role, long id);
 
-    void deleteAll();
+  void deleteAll();
 }

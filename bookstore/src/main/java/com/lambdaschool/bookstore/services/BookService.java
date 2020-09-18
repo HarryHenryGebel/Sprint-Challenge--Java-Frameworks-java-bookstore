@@ -1,21 +1,18 @@
 package com.lambdaschool.bookstore.services;
 
 import com.lambdaschool.bookstore.models.Book;
-
 import java.util.List;
 
-public interface BookService
-{
-    List<Book> findAll();
+public interface BookService {
+  List<Book> findAll();
 
-    Book findBookById(long id);
+  Book findBookById(long id);
 
-    void delete(long id);
+  void delete(long id);
 
-    Book save(Book role);
+  Book save(Book role);
 
-    Book update(Book role,
-                long id);
+  Book update(Book role, long id);
 
-    void deleteAll();
+  void deleteAll();
 }

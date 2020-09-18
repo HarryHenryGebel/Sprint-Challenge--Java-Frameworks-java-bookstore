@@ -8,15 +8,15 @@ This is a basic database scheme with users, user emails, and user roles. This Ja
 
 The table layout is similar to the initial version with the following exceptions:
 
-* The join table userroles is explicitly created. This allows us to add additional columns to the join table
-* Since we are creating the join table ourselves, the Many to Many relationship that formed the join table is now two Many to One relationships
-* All tables now have audit fields
+- The join table userroles is explicitly created. This allows us to add additional columns to the join table
+- Since we are creating the join table ourselves, the Many to Many relationship that formed the join table is now two Many to One relationships
+- All tables now have audit fields
 
 Thus the new table layout is as follows
 
-* User is the driving table.
-* Useremails have a Many-To-One relationship with User. Each User has many user email combinations. Each user email combination has only one User.
-* Roles have a Many-To-Many relationship with Users.
+- User is the driving table.
+- Useremails have a Many-To-One relationship with User. Each User has many user email combinations. Each user email combination has only one User.
+- Roles have a Many-To-Many relationship with Users.
 
 ![Image of Database Layout](usersfinaldb.png)
 
@@ -217,7 +217,6 @@ Status OK
 ```
 
 </details>
-
 
 <details>
 <summary>PUT http://localhost:2019/useremails/useremail/9/email/favbun@hops.local</summary>
@@ -876,12 +875,12 @@ DATA
         }
         ],
     "roles": [
-        {  
+        {
             "role": {
                 "roleid": 3
             }
         },
-        {  
+        {
             "role": {
                 "roleid": 1
             }

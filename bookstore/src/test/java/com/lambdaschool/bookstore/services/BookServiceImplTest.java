@@ -16,57 +16,36 @@ import org.springframework.test.context.junit4.SpringRunner;
 //**********
 // Note security is handled at the controller, hence we do not need to worry about security here!
 //**********
-public class BookServiceImplTest
-{
+public class BookServiceImplTest {
+  @Autowired
+  private BookService bookService;
 
-    @Autowired
-    private BookService bookService;
+  @Before
+  public void setUp() throws Exception {
+    MockitoAnnotations.initMocks(this);
+  }
 
-    @Before
-    public void setUp() throws
-            Exception
-    {
-        MockitoAnnotations.initMocks(this);
-    }
+  @After
+  public void tearDown() throws Exception {}
 
-    @After
-    public void tearDown() throws
-            Exception
-    {
-    }
+  @Test
+  public void findAll() {}
 
-    @Test
-    public void findAll()
-    {
-    }
+  @Test
+  public void findBookById() {}
 
-    @Test
-    public void findBookById()
-    {
-    }
+  @Test(expected = ResourceNotFoundException.class)
+  public void notFindBookById() {}
 
-    @Test(expected = ResourceNotFoundException.class)
-    public void notFindBookById()
-    {
-    }
+  @Test
+  public void delete() {}
 
-    @Test
-    public void delete()
-    {
-    }
+  @Test
+  public void save() {}
 
-    @Test
-    public void save()
-    {
-    }
+  @Test
+  public void update() {}
 
-    @Test
-    public void update()
-    {
-    }
-
-    @Test
-    public void deleteAll()
-    {
-    }
+  @Test
+  public void deleteAll() {}
 }

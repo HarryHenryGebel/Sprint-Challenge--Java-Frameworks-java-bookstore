@@ -17,6 +17,7 @@ This is a basic bookstore database scheme with books which have authors. The boo
 ### MVP
 
 - Implement Security For the routes
+
   - GET /books/books
   - GET /books/book/{id}
   - POST /books/book
@@ -26,6 +27,7 @@ This is a basic bookstore database scheme with books which have authors. The boo
 - Testing the methods
 
   - Book Service:
+
     - findAll
     - findBookById that succeeds
     - findBookById that fails
@@ -91,6 +93,7 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 - **You are tasked to do the following**
 
 - [ ] Currently, Books are not addressed in security so those routes cannot be accessed. Setup security so that the following access is available:
+
   - [ ] GET /books/books - any user with the role ADMIN or DATA can access
   - [ ] GET /books/book/{id} - any user with role ADMIN or DATA can access
   - [ ] POST /books/book - any user with role ADMIN can access
@@ -100,6 +103,7 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 - [ ] When a client tries searching for or updating a book that does not exist, a generic exception is sent back to the client. Change this so our custom exception ResourceNotFoundException is returned instead.
 
 - [ ] Add unit test for the Book Service using the database as test data. The structure is already in place, you just need to write the tests for the following:
+
   - [ ] findAll
   - [ ] findBookById that succeeds
   - [ ] findBookById that fails
@@ -107,6 +111,7 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
   - [ ] save a new book
 
 - [ ] Add unit tests for the Book Controller NOT relying on the database as test data. The structure is already in place, you need to set up the data and write the tests for the following:
+
   - [ ] listAllBooks
   - [ ] getBookById that succeeds
   - [ ] getBookById that fails
