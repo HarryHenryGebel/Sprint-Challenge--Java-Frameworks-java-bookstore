@@ -1,7 +1,6 @@
 package com.lambdaschool.bookstore.controllers;
 
 import com.lambdaschool.bookstore.models.Book;
-import com.lambdaschool.bookstore.BookstoreApplicationTest;
 import com.lambdaschool.bookstore.services.BookService;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +23,9 @@ import org.springframework.web.context.WebApplicationContext;
  * Due to security being in place, we have to switch out WebMvcTest for SpringBootTest
  * @WebMvcTest(value = BookController.class)
  */
-@SpringBootTest(classes = BookstoreApplicationTest.class)
 /****
  * This is the user and roles we will use to test!
+@SpringBootTest(classes = BookstoreApplication.class)
  */
 @WithMockUser(username = "admin", roles = { "ADMIN", "DATA" })
 public class BookControllerTest {
