@@ -19,10 +19,10 @@ public class BookstoreApplication {
    * If an application relies on an environment variable, check to make sure that environment variable is available!
    * If the environment variable is not available, you could set a default value, or as is done here, stop execution of the program
    *
-   * @param envvar The system environment where environment variable live
+   * @param variable The system environment where environment variable live
    */
-  private static void checkEnvironmentVariable(String envvar) {
-    if (System.getenv(envvar) == null) {
+  private static void checkEnvironmentVariable(String variable) {
+    if (System.getenv(variable) == null) {
       stop = true;
     }
   }
