@@ -228,7 +228,32 @@ public class BookControllerTest {
   }
 
   @Test
-  public void updateFullBook() {}
+  public void addNewBook() throws Exception {
+    String apiUrl = "/books/book";
+
+    Section s1 = new Section("Fiction");
+    Author a1 = new Author("John", "Mitchell");
+
+    Book b6 = new Book("TestTitle", "1239287288289", 2021, s1);
+    b6.getWrotes().add(new Wrote(a1, new Book()));
+    b6.setBookid(1);
+
+    ObjectMapper mapper = new ObjectMapper();
+    String bookString = mapper.writeValueAsString(b6);
+
+    Mockito.when(bookService.save(any(Book.class))).thenReturn(b6);
+
+    RequestBuilder rb = MockMvcRequestBuilders
+      .post(apiUrl)
+      .contentType(MediaType.APPLICATION_JSON)
+      .accept(MediaType.APPLICATION_JSON)
+      .content(bookString);
+
+    mockMvc
+      .perform(rb)
+      .andExpect(status().isCreated())
+      .andDo(MockMvcResultHandlers.print());
+  }
 
   @Test
   public void deleteBookById() throws Exception {}
