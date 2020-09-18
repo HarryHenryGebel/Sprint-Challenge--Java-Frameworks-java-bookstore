@@ -32,7 +32,9 @@ public class BookServiceImplTest {
   public void tearDown() {}
 
   @Test
-  public void findAll() {}
+  public void findAll() {
+    assertEquals(4, bookService.findAll().size());
+  }
 
   @Test
   public void findBookById() {
