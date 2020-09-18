@@ -35,10 +35,14 @@ public class BookServiceImplTest {
   public void findAll() {}
 
   @Test
-  public void findBookById() {}
+  public void findBookById() {
+    assertEquals(26, bookService.findBookById(26).getBookid());
+  }
 
   @Test(expected = ResourceNotFoundException.class)
-  public void notFindBookById() {}
+  public void notFindBookById() {
+    assertEquals(5, bookService.findBookById(9001).getBookid());
+  }
 
   @Test
   public void delete() {}
