@@ -53,7 +53,19 @@ public class BookServiceImplTest {
   }
 
   @Test
-  public void save() {}
+  public void save() {
+    Section s1 = new Section("Fiction");
+    s1.setSectionid(1);
+    Author a100 = new Author("John", "Mitchell");
+    a100.setAuthorid(1);
+    Book testB = new Book("TestTitle", "1239287288289", 2076, s1);
+    testB.getWrotes().add(new Wrote(a100, new Book()));
+
+    assertEquals(testB.getTitle(), "TestTitle");
+    assertEquals(testB.getIsbn(), "1239287288289");
+    assertEquals(testB.getCopy(), 2076);
+    assertEquals(testB.getSection().getName(), s1.getName());
+  }
 
   @Test
   public void update() {}
