@@ -24,12 +24,12 @@ public class BookServiceImplTest {
   private BookService bookService;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     MockitoAnnotations.initMocks(this);
   }
 
   @After
-  public void tearDown() throws Exception {}
+  public void tearDown() {}
 
   @Test
   public void findAll() {}
