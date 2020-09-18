@@ -1,7 +1,13 @@
 package com.lambdaschool.bookstore.services;
 
+import static junit.framework.TestCase.assertEquals;
+
 import com.lambdaschool.bookstore.BookstoreApplication;
 import com.lambdaschool.bookstore.exceptions.ResourceNotFoundException;
+import com.lambdaschool.bookstore.models.Author;
+import com.lambdaschool.bookstore.models.Book;
+import com.lambdaschool.bookstore.models.Section;
+import com.lambdaschool.bookstore.models.Wrote;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
