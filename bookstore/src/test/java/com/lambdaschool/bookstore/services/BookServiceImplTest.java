@@ -47,7 +47,10 @@ public class BookServiceImplTest {
   }
 
   @Test
-  public void delete() {}
+  public void delete() {
+    bookService.delete(26);
+    assertEquals(4, bookService.findAll().size());
+  }
 
   @Test
   public void save() {}
