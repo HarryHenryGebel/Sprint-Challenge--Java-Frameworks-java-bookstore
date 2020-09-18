@@ -1,6 +1,5 @@
 package com.lambdaschool.bookstore.controllers;
 
-import com.lambdaschool.bookstore.models.Book;
 import com.lambdaschool.bookstore.services.BookService;
 import java.util.ArrayList;
 import java.util.List;
