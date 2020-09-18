@@ -19,14 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
-/*****
- * Due to security being in place, we have to switch out WebMvcTest for SpringBootTest
- * @WebMvcTest(value = BookController.class)
- */
-/****
- * This is the user and roles we will use to test!
 @SpringBootTest(classes = BookstoreApplication.class)
- */
 @WithMockUser(username = "admin", roles = { "ADMIN", "DATA" })
 public class BookControllerTest {
   /******
@@ -44,18 +37,11 @@ public class BookControllerTest {
 
   @Before
   public void setUp() {
-    /*****
-     * The following is needed due to security being in place!
-     */
     mockMvc =
       MockMvcBuilders
         .webAppContextSetup(webApplicationContext)
         .apply(SecurityMockMvcConfigurers.springSecurity())
         .build();
-    /*****
-     * Note that since we are only testing bookstore data, you only need to mock up bookstore data.
-     * You do NOT need to mock up user data. You can. It is not wrong, just extra work.
-     */
   }
 
   @After
