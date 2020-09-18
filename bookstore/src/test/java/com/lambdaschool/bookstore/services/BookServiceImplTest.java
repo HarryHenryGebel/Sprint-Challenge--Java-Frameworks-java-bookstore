@@ -13,9 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApplication.class)
-//**********
-// Note security is handled at the controller, hence we do not need to worry about security here!
-//**********
 public class BookServiceImplTest {
   @Autowired
   private BookService bookService;
