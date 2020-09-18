@@ -1,5 +1,6 @@
 package com.lambdaschool.bookstore.services;
 
+import com.lambdaschool.bookstore.exceptions.ResourceNotFoundException;
 import com.lambdaschool.bookstore.models.Author;
 import com.lambdaschool.bookstore.models.Book;
 import com.lambdaschool.bookstore.models.Wrote;
@@ -7,25 +8,27 @@ import com.lambdaschool.bookstore.repository.AuthorRepository;
 import com.lambdaschool.bookstore.repository.BookRepository;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Transactional
 @Service("bookService")
 public class BookServiceImpl implements BookService {
-  @Autowired
-  UserAuditing userAuditing;
+  private final BookRepository bookrepos;
 
-  @Autowired
-  BookRepository bookrepos;
+  private final SectionService sectionService;
 
-  @Autowired
-  SectionService sectionService;
+  private final AuthorRepository authorrepos;
 
-  @Autowired
-  AuthorRepository authorrepos;
+  public BookServiceImpl(
+    BookRepository bookrepos,
+    SectionService sectionService,
+    AuthorRepository authorrepos
+  ) {
+    this.bookrepos = bookrepos;
+    this.sectionService = sectionService;
+    this.authorrepos = authorrepos;
+  }
 
   @Override
   public List<Book> findAll() {
@@ -39,7 +42,8 @@ public class BookServiceImpl implements BookService {
     return bookrepos
       .findById(id)
       .orElseThrow(
-        () -> new EntityNotFoundException("Book with id " + id + " Not Found!")
+        () ->
+          new ResourceNotFoundException("Book with id " + id + " Not Found!")
       );
   }
 
@@ -49,7 +53,7 @@ public class BookServiceImpl implements BookService {
     if (bookrepos.findById(id).isPresent()) {
       bookrepos.deleteById(id);
     } else {
-      throw new EntityNotFoundException("Book with id " + id + " Not Found!");
+      throw new ResourceNotFoundException("Book with id " + id + " Not Found!");
     }
   }
 
@@ -63,7 +67,7 @@ public class BookServiceImpl implements BookService {
         .findById(book.getBookid())
         .orElseThrow(
           () ->
-            new EntityNotFoundException(
+            new ResourceNotFoundException(
               "Book id " + book.getBookid() + " not found!"
             )
         );
@@ -84,7 +88,7 @@ public class BookServiceImpl implements BookService {
         .findById(w.getAuthor().getAuthorid())
         .orElseThrow(
           () ->
-            new EntityNotFoundException(
+            new ResourceNotFoundException(
               "Author Id " + w.getAuthor().getAuthorid() + " Not Found!"
             )
         );
@@ -123,7 +127,7 @@ public class BookServiceImpl implements BookService {
           .findById(w.getAuthor().getAuthorid())
           .orElseThrow(
             () ->
-              new EntityNotFoundException(
+              new ResourceNotFoundException(
                 "Author Id " + w.getAuthor().getAuthorid() + " Not Found!"
               )
           );
