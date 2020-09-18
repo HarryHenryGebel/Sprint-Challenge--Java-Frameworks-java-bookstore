@@ -24,7 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
  * Due to security being in place, we have to switch out WebMvcTest for SpringBootTest
  * @WebMvcTest(value = BookController.class)
  */
-@SpringBootTest(classes = BookstoreApplication.class)
+@SpringBootTest(classes = BookstoreApplicationTest.class)
 /****
  * This is the user and roles we will use to test!
  */
@@ -44,7 +44,7 @@ public class BookControllerTest {
   List<Book> bookList = new ArrayList<>();
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     /*****
      * The following is needed due to security being in place!
      */
@@ -60,7 +60,7 @@ public class BookControllerTest {
   }
 
   @After
-  public void tearDown() throws Exception {}
+  public void tearDown() {}
 
   @Test
   public void listAllBooks() throws Exception {}
